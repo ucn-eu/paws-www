@@ -85,6 +85,7 @@ sub print_android_2 {
 
 #########################
 sub print_android_4 {
+android_message();
 intro_text();
 print "<br>\n";
 print "<B>Step 1.</B> Please click <a href=\"https://play.google.com/store/apps/details?id=net.openvpn.openvpn\">here</a> to get the app you will need to connect.";
@@ -93,14 +94,22 @@ print "Now, once your app is installed...";
 print "<br>\n";
 print "<B>Step 2.</B> Click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_conf/paws.ovpn\">here</a> download a special PAWS setup file to get you connected";
 print "<p>\n";
-print "<B>Step 3.</B>Run the OpenVPN Connect app that you installed at Step 1. 
-Press the list/menu button on the case of your phone. Touch 'Import'. Touch 'Import Profile from SD Card'. 
-Browse to the location of 'paws.ovpn', which was downloaded at Step 2 (this should be in your browser's 'Downloads' folder, exact location dependent on browser). 
-Select 'paws.ovpn'. Enter your PAWS username and password. Tick the 'save' box. Touch 'Connect'. <br>\n";
+print "<B>Step 3.</B>
+<ul>
+<li>Run the OpenVPN Connect app that you installed at Step 1.
+</li><li>Press the list/menu button on the case of your phone.
+</li><li>Touch 'Import' and then touch 'Import Profile from SD Card'. 
+</li><li>Browse to the location of 'paws.ovpn', which was downloaded at Step 2 (this should be in your browser's 'Downloads' folder, exact location dependent on browser). 
+</li><li>Select 'paws.ovpn'
+</li><li>Enter your PAWS username and password
+</li><li>Tick the 'save' box and touch 'Connect'.
+</li>
+</ul>";
 }
 
 #########################
 sub print_iOS {
+ios_message();
 intro_text();
 print "<br>\n";
 print "<B>Step 1.</B> Please click <a href=\"https://itunes.apple.com/gb/app/openvpn-connect/id590379981?mt=8\">here</a> to get the app you will need to connect.";
@@ -109,37 +118,63 @@ print "Now, once your app is installed...";
 print "<br>\n";
 print "<B>Step 2.</B> Click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_conf/paws.mobileconfig\">here</a> download a special PAWS setup file to get you connected";
 print "<p>\n";
-print "<B>Step 3.</B> When you see the 'Install Profile' screen, touch 'Install'. When you see the 'Unsigned Profile' warning, touch 'Install Now'. Touch 'Done'. Go to the OpenVPN Connect app. Enter your PAWS username into the 'User ID' box.
-Enter your PAWS password into the 'Password' box. Slide the button next to 'Save' to green. Slide the button next to 'Disconnected' to green.<br>\n";	
+print "<B>Step 3.</B> 
+<ul>
+<li>When you see the 'Install Profile' screen, touch 'Install'.
+</li><li>When you see the 'Unsigned Profile' warning, touch 'Install Now' and then Touch 'Done'.
+</li><li>Go to the OpenVPN Connect app and enter your PAWS username into the 'User ID' box.
+</li><li>Enter your PAWS password into the 'Password' box.
+</li><li>Slide the button next to 'Save' to green.
+</li><li>Slide the button next to 'Disconnected' to green.
+</li>
+</ul>";	
 }
 #########################
 sub print_windows {
+pc_message();
 intro_text();
 print "<br>\n";
-print "<B>Step 1.</B> Please click <a href=\"http://www.tunxten.com/download\">here</a> to get the app you will need to connect.";
+print "<B>Step 1.</B> Please click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_apps/tunXten-1.0.8.6-setup.exe\">here</a> to get the app you will need to connect.";
 print "<p>\n";
 print "<B>Step 2.</B> Click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_conf/paws.ovpn\">here</a> download a special PAWS setup file to get you connected";
 print "<p>\n";
-print "<B>Step 3.</B> Install the Tunxten app. Go to the Windows Notification Area (screen bottom right, next to clock) and click on the Tunxten icon.
-Click the blue '+' for 'Import OpenVPN Configuration'. Click the '...files on my computer' button.
-Browse to the location of 'paws.ovpn' (downloaded in Step 2). This is likely to be the Windows Download folder at: C:\\Users\**your Windows username**\\Downloads.
-Select 'paws.ovpn' and then click 'Open'. Click 'Close' in the configuration list window.
-Go to the Windows Notification Area and click on the Tunxten icon. 
-In the 'Paws' configuration, click the 'Connect' icon (small circle, to the right of the green shield icon).
-When asked to provide login credentials, enter your PAWS username and password. Click OK.<br>\n";
+print "<B>Step 3.</B>
+<ul>
+<li>Install the Tunxten app.
+</li><li>Go to the Windows Notification Area (screen bottom right, next to clock) and click on the Tunxten icon.
+</li><li>Click the blue '+' for 'Import OpenVPN Configuration'.
+</li><li>Click the '...files on my computer' button.
+</li><li>Browse to the location of 'paws.ovpn' (downloaded in Step 2). This is likely to be the Windows Download folder at: C:\\Users\**your Windows username**\\Downloads.
+</li><li>Select 'paws.ovpn' and then click 'Open'.
+</li><li>Click 'Close' in the configuration list window.
+</li><li>Go to the Windows Notification Area and click on the Tunxten icon. 
+</li><li>In the 'Paws' configuration, click the 'Connect' icon (small circle, to the right of the green shield icon).
+</li><li>When asked to provide login credentials, enter your PAWS username and password. Click OK.
+</li>
+</ul>";
 }
 #########################
 sub print_apple {
+mac_message();
 intro_text();
 print "<br>\n";
-print "<B>Step 1.</B> Please click <a href=\"https://sourceforge.net/projects/tunnelblick/files/All%20files/Tunnelblick_3.3.2.dmg/download\">here</a> to get the app you will need to connect.";
+print "<B>Step 1.</B> Please click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_apps/Tunnelblick_3.3.2.dmg\">here</a> to get the app you will need to connect.";
 print "<br>\n";
 print "<B>Step 2.</B> Click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_conf/paws.ovpn\">here</a> download a special PAWS setup file to get you connected";
 print "<p>\n";
-print "<B>Step 3.</B>Install the Tunnelblick app downloaded at Step 1. Run Tunnelblick. Click [icon]>VPN details. Click '+' in bottom left corner to add a configuration. Click 'I have configurations'. 
-Click 'openvpn configurations'. Move the paws.ovpn file you downloaded in Step 2 into the 'Empty Tunnelblick VPN Configuration' folder created on your desktop.
-Rename the 'Empty Tunnelblick VPN Configuration' directory to 'PAWS-VPN.tblk'. Double click PAWS-VPN.tblk and follow on screen prompts for tunnelblick to install config. 
-Connect to PAWS-VPN, entering your PAWS username and password, when requested.<br>\n";
+print "<B>Step 3.</B>
+<ul>
+<li>Install the Tunnelblick app downloaded at Step 1. 
+</li><li>Run Tunnelblick and click [icon]>VPN details. 
+</li><li>Click '+' in bottom left corner to add a configuration. 
+</li><li>Click 'I have configurations'. 
+</li><li>Click 'openvpn configurations'. 
+</li><li>Move the paws.ovpn file you downloaded in Step 2 into the 'Empty Tunnelblick VPN Configuration' folder created on your desktop.
+</li><li>Rename the 'Empty Tunnelblick VPN Configuration' directory to 'PAWS-VPN.tblk'. 
+</li><li>Double click PAWS-VPN.tblk and follow on screen prompts for tunnelblick to install config. 
+</li><li>Connect to PAWS-VPN, entering your PAWS username and password, when requested.
+</li>
+</ul>";
 }
 
 #########################
@@ -149,7 +184,26 @@ sub print_unknown {
 	print "<br>\n";
 }
 
+#########################
+sub pc_message {
+	print "<p><h3>If you already have a PAWS set up on your device then please start the Tunxten VPN app first before you can access the Internet.
+	Otherwise, you will keep on being directed to this page.</h3></p>";
+}
 
+#########################
+sub mac_message {
+	print "<p><h3>If you already have a PAWS set up on your device then please start the Tunnelblick VPN app first before you can access the Internet.
+	Otherwise, you will keep on being directed to this page.</h3></p>";
+}
 
+#########################
+sub ios_message {
+	print "<p><h3>If you already have a PAWS set up on your device then please start the OpenVPN Connect app first before you can access the Internet.
+	Otherwise, you will keep on being directed to this page.</h3></p>";
+}
 
-
+#########################
+sub android_message {
+	print "<p><h3>If you already have a PAWS set up on your device then please start the OpenVPN app first before you can access the Internet.
+	Otherwise, you will keep on being directed to this page.</h3></p>";
+}
