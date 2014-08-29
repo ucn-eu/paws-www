@@ -1,0 +1,108 @@
+.StatStyle {
+	margin:0px;padding:0px;
+	width:90%;
+	box-shadow: 3px 3px 3px #aaaaaa;
+	border:1px solid #7bbcfc;
+	
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+	
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+	
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+	
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}
+	
+.StatStyle h1{
+	text-align:center;
+	font-size:18px;
+	font-family:Verdana;
+	font-weight:normal;
+	color:#00000;	
+	
+}
+.StatStyle table{
+    border-collapse: collapse;
+    border-spacing: 0;
+	width:100%;
+	height:50%;
+	margin:0px;
+	padding:0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.StatStyle tr:last-child td:last-child {
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+.StatStyle table tr:first-child td:first-child {
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}
+.StatStyle table tr:first-child td:last-child {
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+}
+.StatStyle tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+}
+.StatStyle tr:hover td{
+	background-color:#e4faff;
+}
+.StatStyle td{
+	vertical-align:middle;	
+	background-color:#ffffff;
+	border:1px solid #7bbcfc;
+	border-width:0px 1px 1px 0px;
+	text-align:center;
+	padding:1px;
+	font-size:12px;
+	font-family:Verdana;
+	font-weight:normal;
+	color:#000000;
+}.StatStyle tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}.StatStyle tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}.StatStyle tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.StatStyle tr:first-child td{
+		background:-o-linear-gradient(bottom, #e0f0ff 5%, #e4faff 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e0f0ff), color-stop(1, #e4faff) );
+	background:-moz-linear-gradient( center top, #e0f0ff 5%, #e4faff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0f0ff", endColorstr="#e4faff");	background: -o-linear-gradient(top,#e0f0ff,e4faff);
+
+	background-color:#e0f0ff;
+	border:0px solid #7bbcfc;
+	text-align:center;
+	border-width:0px 0px 1px 1px;
+	font-size:12px;
+	font-family:Verdana;
+	font-weight:bold;
+	color:#000000;
+}
+.StatStyle tr:first-child:hover td{
+	background:-o-linear-gradient(bottom, #e0f0ff 5%, #e4faff 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e0f0ff), color-stop(1, #e4faff) );
+	background:-moz-linear-gradient( center top, #e0f0ff 5%, #e4faff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0f0ff", endColorstr="#e4faff");	background: -o-linear-gradient(top,#e0f0ff,e4faff);
+	background-color:#e0f0ff;
+}
+.StatStyle tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.StatStyle tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+}
