@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>IPv4</key>
+			<dict>
+				<key>OverridePrimary</key>
+				<integer>0</integer>
+			</dict>
+			<key>PayloadDescription</key>
+			<string>Configures VPN settings, including authentication.</string>
+			<key>PayloadDisplayName</key>
+			<string>VPN (PAWS)</string>
+			<key>PayloadIdentifier</key>
+			<string>PAWS.vpn1</string>
+			<key>PayloadOrganization</key>
+			<string></string>
+			<key>PayloadType</key>
+			<string>com.apple.vpn.managed</string>
+			<key>PayloadUUID</key>
+			<string>A8EAC560-5AF4-4F1B-B63B-D7B6EE043CAD</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>Proxies</key>
+			<dict/>
+			<key>UserDefinedName</key>
+			<string>PAWS2</string>
+			<key>VPN</key>
+			<dict>
+				<key>AuthenticationMethod</key>
+				<string>Password</string>
+				<key>RemoteAddress</key>
+				<string>DEFAULT</string>
+			</dict>
+			<key>VPNSubType</key>
+			<string>net.openvpn.OpenVPN-Connect.vpnplugin</string>
+			<key>VPNType</key>
+			<string>VPN</string>
+			<key>VendorConfig</key>
+			<dict>
+				<key>auth-user-pass</key>
+				<string>NOARGS</string>
+				<key>ca</key>
+				<string>-----BEGIN CERTIFICATE-----\nMIIEBDCCA22gAwIBAgIJAJKDQTDCZ6JBMA0GCSqGSIb3DQEBBQUAMIGzMQswCQYD\nVQQGEwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNhbkZyYW5jaXNjbzEVMBMG\nA1UEChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFuZ2VtZTEiMCAGA1UEAxQZ\ndW5pdmVhbjEubWVtc2V0Lm5lG1tDCAgICDERMA8GA1UEKRMIY2hhbmdlbWUxHzAd\nBgkqhkiG9w0BCQEWEG1haWxAaG9zdC5kb21haW4wHhcNMTQwNjIxMjIwNjA0WhcN\nMjQwNjE4MjIwNjA0WjCBszELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRUwEwYD\nVQQHEwxTYW5GcmFuY2lzY28xFTATBgNVBAoTDEZvcnQtRnVuc3RvbjERMA8GA1UE\nCxMIY2hhbmdlbWUxIjAgBgNVBAMUGXVuaXZlYW4xLm1lbXNldC5uZRtbQwgICAgx\nETAPBgNVBCkTCGNoYW5nZW1lMR8wHQYJKoZIhvcNAQkBFhBtYWlsQGhvc3QuZG9t\nYWluMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCmHh0ugzl22Ssg9ZX03BIR\nNy7lzaahiR5XJ0UbraVVN6zzU6e3egEKRwwNbf2h9xHTQBA9efd7w1y0IBIA/234\n1acDeshPzKgIhV1wf/cra6Doa/tGrpNw8gdrnpz2kUjdRw5WOziMw2oihE51Vqgg\nfEQ8TLN8dM+tTxFbv3YatwIDAQABo4IBHDCCARgwHQYDVR0OBBYEFPEF2ZBm+lrj\nW4vN0T45BTeIcPq4MIHoBgNVHSMEgeAwgd2AFPEF2ZBm+lrjW4vN0T45BTeIcPq4\noYG5pIG2MIGzMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFTATBgNVBAcTDFNh\nbkZyYW5jaXNjbzEVMBMGA1UEChMMRm9ydC1GdW5zdG9uMREwDwYDVQQLEwhjaGFu\nZ2VtZTEiMCAGA1UEAxQZdW5pdmVhbjEubWVtc2V0Lm5lG1tDCAgICDERMA8GA1UE\nKRMIY2hhbmdlbWUxHzAdBgkqhkiG9w0BCQEWEG1haWxAaG9zdC5kb21haW6CCQCS\ng0EwwmeiQTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4GBAJ27pCZcgEWt\nwiBNlFnbSFcNCZOomlRqSIyy9HMQSt7kJVtG1mdOfbOLk8A/oNVpSTWwEyV5JrZw\nHUlAoOl5+V684G37jg2OYsKx0BQa/xVZBxS/ivFaXV4YTYAeWHiS9ydFPVZ5wam2\npIsU03vIwWYPEln1chuTMgLf6mbbke7O\n-----END CERTIFICATE-----\n</string>
+				<key>client</key>
+				<string>NOARGS</string>
+				<key>comp-lzo</key>
+				<string>NOARGS</string>
+				<key>dev</key>
+				<string>tun</string>
+				<key>nobind</key>
+				<string>NOARGS</string>
+				<key>persist-key</key>
+				<string>NOARGS</string>
+				<key>persist-tun</key>
+				<string>NOARGS</string>
+				<key>proto</key>
+				<string>udp</string>
+				<key>remote</key>
+				<string>77.73.5.136 1194</string>
+				<key>resolv-retry</key>
+				<string>infinite</string>
+				<key>verb</key>
+				<string>3</string>
+				<key>vpn-on-demand</key>
+				<string>0</string>
+			</dict>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Network configuration file for PAWS.</string>
+	<key>PayloadDisplayName</key>
+	<string>PAWS</string>
+	<key>PayloadIdentifier</key>
+	<string>PAWS</string>
+	<key>PayloadOrganization</key>
+	<string></string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>B7C0B537-1C68-454B-A282-638751BE221E</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

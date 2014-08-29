@@ -4,9 +4,14 @@
 use strict;
 use CGI qw(:standard);
 use CGI::Carp qw(fatalsToBrowser); 
-#use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
 
 print header;
+
+=begin comment
+PAWS2 rewrite by Steve North
+2014
+=end comment
+=cut
 
 print start_html(
         -title  =>      'PAWS VPN Instructions',
@@ -15,393 +20,136 @@ print start_html(
 print img { src => "/images/pawshdrmid.png", align => "CENTER" };
 
 
-#foreach my $key (sort(keys(%ENV))) {
-	#print "$key = $ENV{$key}<br>\n";
-#}
-
 my $agent;
-
-#$agent='Mozilla/5.0 (iPad; CPU OS 6_1_2 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10B146 Safari/8536.25';
-#$agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31';
 
 $agent=$ENV{'HTTP_USER_AGENT'};
 
-print "<hr><p>";
-print $agent;
-print "<hr><p>";
-
-#if ( $ENV{'HTTP_USER_AGENT'} =~ /NT\s(\d\.\d)/ ) {
-#	print $1;
-#}
+#########################
 
 if ( $agent =~ /Android\s(\d)\.(\d)\.(\d)/ ) {
 	my $android_v1 = $1;
 	my $android_v2 = $2;
 	my $android_v3 = $3;
 
-
 	print("<H2>You appear to be using Android $android_v1.$android_v2.$android_v3</H2>");
-	print("<p>Please follow the instructions below to configure your VPN client:</p>");
-
-	print_android_2_l2tp();
-	#if ($android_v1 <= 3) {
-	#	print_android_2_l2tp();
-	#}
-	#else {
-	#	print_android_4_pptp();
-	#}
+	
+	if($android_v1 > 3)
+	{
+	print_android_4();
+	}
+	else
+	{
+	print_android_2();
+	}
 }
 elsif ( $agent =~ /\((iP\w+);/ ) {
 	print("<H2>You appear to be using $1</H2>");
-	print("<p>Please follow the instructions below to configure your VPN client:</p>");
-	print_iphone_l2tp();
+	print_iOS();
 }
 elsif ( $agent =~ /Macintosh;.*Mac (OS\s+X\s+\d+_\d+_\d+)/ ) {
 	print("<H2>You appear to be using $1</H2>");
-	print("<p>Please follow the instructions below to configure your VPN client:</p>");
-	print_apple_l2tp();
+	print_apple();
 }
 elsif ( $agent =~ /Windows\sNT/ ) {
 	print("<H2>You appear to be using Microsoft Windows</H2>");
-	print("<p>Please follow the instructions below to configure your VPN client:</p>");
 	print_windows();
 }
 else {
 	print_unknown();
 }
 
+#print_android_4();
+#print_iOS();
+#print_windows();
+#print_apple();
+
+#########################
+
 print end_html;
 
 
-
 #########################
-sub print_android_4_pptp {
-
-	print "<br>\n";
-	print "Android PPPP\n";
-	print "<br>\n";
-
-}
-#########################
-sub print_android_2_l2tp {
-
-	print <<ANDROID_2_L2TP;
-
-	<ul>
-	
-	<li>
-        	Open Settings and click on Wireless Controls
-	</li>
-	<li>
-        	Click on VPN Settings
-	</li>
-	<li>
-        	Click on Add VPN
-	</li>
-	<li>
-        	Choose L2TP/IPSec PSK VPN
-	</li>
-	<li>
-        	In the VPN Name field, enter &quot;<b>PAWS L2TP</b>&quot;
-	</li>
-	<li>
-        	In the Set VPN Server field enter &quot;<b>83.223.208.50</b>&quot;
-	</li>
-	<li>
-        	Set IPSec pre-shared key to &quot;<b>S3cr3t4PAWSPr0j3ct</b>&quot;. Please do NOT share this with anyone!
-	</li>
-	<li>
-        	Do NOT enable L2TP secret.
-	</li>
-	<li>
-        	Click Save or Back
-	</li>
-	<li>
-	</ul>
-
-	<ul>
-	<li>
-        Open Settings and click on Wireless Controls
-	</li>
-	<li>
-        Click on &quot;<b>PAWS L2TP</b>&quot;
-	</li>
-	<li>
-        In the Username: field, enter your  username
-	</li>
-	<li>
-        In the Password: field, enter your password
-	</li>
-	<li>
-        Click Connect
-	</li>
-
-
-
-	</ul>
-
-ANDROID_2_L2TP
-
+sub intro_text {
+print("There are 3 simple steps to get your device ready for connection to PAWS:");
+print "<br>\n";
+print("1. Get the app. 2. Get the PAWS file. 3. Show the app where the PAWS file is on your device.");
+print "<br>\n";
 }
 
 #########################
-sub print_iphone_l2tp {
+sub print_android_2 {
+	print "<br>\n";
+	print "Sorry, this device is not supported for PAWS. Android 4.0+ required.\n";
+	print "<br>\n";
+}
 
-	print <<IPHONE_L2TP;
+#########################
+sub print_android_4 {
+intro_text();
+print "<br>\n";
+print "<B>Step 1.</B> Please click <a href=\"https://play.google.com/store/apps/details?id=net.openvpn.openvpn\">here</a> to get the app you will need to connect.";
+print "<br>\n";
+print "Now, once your app is installed...";
+print "<br>\n";
+print "<B>Step 2.</B> Click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_conf/paws.ovpn\">here</a> download a special PAWS setup file to get you connected";
+print "<p>\n";
+print "<B>Step 3.</B>Run the OpenVPN Connect app that you installed at Step 1. 
+Press the list/menu button on the case of your phone. Touch 'Import'. Touch 'Import Profile from SD Card'. 
+Browse to the location of 'paws.ovpn', which was downloaded at Step 2 (this should be in your browser's 'Downloads' folder, exact location dependent on browser). 
+Select 'paws.ovpn'. Enter your PAWS username and password. Tick the 'save' box. Touch 'Connect'. <br>\n";
+}
 
-	<ul>
-	<li>
-	Choose &quot;Settings&quot; from your  home screen.
-	</li>
-	<li>
-	Choose &quot;General&quot;
-	</li>
-	<li>
-	Choose &quot;Network&quot;
-	</li>
-	<li>
-	Choose &quot;VPN&quot;
-	</li>
-	<li>
-	Choose &quot;Add VPN Configuration&quot;
-	</li>
-	<li>
-	Choose &quot;L2TP&quot;
-	</li>
-	<li>
-	Description = &quot;<b>PAWS L2TP</b>&quot;
-	</li>
-	<li>
-	Server: &quot;<b>83.223.208.50</b>&quot;
-	</li>
-	<li>
-	Account: Enter your PAWS username
-	</li>
-	<li>
-	RSA SecurID: OFF
-	</li>
-	<li>
-	Password: Your PAWS password
-	</li>
-	<li>
-	Secret: &quot;<b>S3cr3t4PAWSPr0j3ct</b>&quot;
-	</li>
-	<li>
-	Send all Traffic: ON
-	</li>
-	<li>
-
-	Click SAVE at the top
-	</li>
-	<li>
-
-
-	Go back to VPN screen found at:
-	</li>
-	<li>
-
-	Settings -> General -> Network -> VPN or Settings ->VPN and slide selector to ON.
-	</li>
-
-	</ul>
-
-IPHONE_L2TP
-
+#########################
+sub print_iOS {
+intro_text();
+print "<br>\n";
+print "<B>Step 1.</B> Please click <a href=\"https://itunes.apple.com/gb/app/openvpn-connect/id590379981?mt=8\">here</a> to get the app you will need to connect.";
+print "<br>\n";
+print "Now, once your app is installed...";
+print "<br>\n";
+print "<B>Step 2.</B> Click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_conf/paws.mobileconfig\">here</a> download a special PAWS setup file to get you connected";
+print "<p>\n";
+print "<B>Step 3.</B> When you see the 'Install Profile' screen, touch 'Install'. When you see the 'Unsigned Profile' warning, touch 'Install Now'. Touch 'Done'. Go to the OpenVPN Connect app. Enter your PAWS username into the 'User ID' box.
+Enter your PAWS password into the 'Password' box. Slide the button next to 'Save' to green. Slide the button next to 'Disconnected' to green.<br>\n";	
 }
 #########################
 sub print_windows {
-
-	print <<WINDOWS_L2TP;
-
-        <ul>
-        <li>
-	Click on Windows Start Orb (bottom left corner)
-	</li>
-        <li>
-	Click on Control Panel
-	</li>
-        <li>
-	Click on Network and Internet
-	</li>
-        <li>
-	Click on Network and Sharing CenterYour screen should look similar to this
-	</li>
-        <li>
-	Click on Setup a new connection or network
-	</li>
-        <li>
-	Choose Use My Internet Connection
-	</li>
-        <li>
-
-	Input your settings:
-	</li>
-        <li>
-	Internet Address: &quot;<b>83.223.208.50</b>&quot;
-	</li>
-        <li>
-	Destination Name: &quot;<b>PAWS L2TP</b>&quot;
-	</li>
-        <li>
-	IMPORTANT: Click on the option Dont connect now; just set it up so I can connect later
-	</li>
-        <li>
-
-	Click Next
-	</li>
-        <li>
-	Input your PPTP Username and Password
-	</li>
-        <li>
-	Click Create
-	</li>
-        <li>
-	IMPORTANT Click on CLOSE (do not connect right now or it will fail)
-	</li>
-        <li>
-	Click Connect to a network now that you are back at the Network and Sharing Center
-	</li>
-        <li>
-	On the pop-up window double click the &quot;<b>PAWS L2TP</b>&quot; name
-	</li>
-        <li>
-	Click on Properties
-	</li>
-        <li>
-	Click on Options
-	</li>
-        <li>
-	Uncheck Include Windows logon domain
-	</li>
-        <li>
-	Click on Security
-	</li>
-        <li>
-	On Type of VPN Choose L2TP/IPSec
-	</li>
-        <li>
-	Click on the Advanced button
-	</li>
-        <li>
-	Click on the top option Use preshared key for authentication
-	</li>
-        <li>
-	Input &quot;<b>S3cr3t4PAWSPr0j3ct</b>&quot; as the Key
-	</li>
-        <li>
-	Click Ok
-	</li>
-        <li>
-	Click on Networking
-	</li>
-        <li>
-	Uncheck Internet Protocol Version 6
-	</li>
-        <li>
-	Click OK
-	</li>
-        <li>
-	On the connect screen enter your username and password again
-	</li>
-        <li>
-	Click on Connect
-	</li>
-        <li>
-	You should be connected to the VPN now.
-	</li>
-        </ul>
-
-
-
-WINDOWS_L2TP
-
+intro_text();
+print "<br>\n";
+print "<B>Step 1.</B> Please click <a href=\"http://www.tunxten.com/download\">here</a> to get the app you will need to connect.";
+print "<p>\n";
+print "<B>Step 2.</B> Click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_conf/paws.ovpn\">here</a> download a special PAWS setup file to get you connected";
+print "<p>\n";
+print "<B>Step 3.</B> Install the Tunxten app. Go to the Windows Notification Area (screen bottom right, next to clock) and click on the Tunxten icon.
+Click the blue '+' for 'Import OpenVPN Configuration'. Click the '...files on my computer' button.
+Browse to the location of 'paws.ovpn' (downloaded in Step 2). This is likely to be the Windows Download folder at: C:\\Users\**your Windows username**\\Downloads.
+Select 'paws.ovpn' and then click 'Open'. Click 'Close' in the configuration list window.
+Go to the Windows Notification Area and click on the Tunxten icon. 
+In the 'Paws' configuration, click the 'Connect' icon (small circle, to the right of the green shield icon).
+When asked to provide login credentials, enter your PAWS username and password. Click OK.<br>\n";
 }
 #########################
-sub print_apple_l2tp {
-
-	print <<APPLE_L2TP;
-
-	<ul>
-
-	<li>
-	To setup the connection, you need to create a new connection profile in your network preferences.
-	</li>
-	<li>
-	Click on Apple
-	</li>
-	<li>
-	System Preferences
-	</li>
-	<li>
-	Network Icon
-	</li>
-	<li>
-	Click the + sign in the lower left corner
-	</li>
-	<li>
-	When you click the + sign, a window will pop up. On the INTERFACE dropdown choose VPN
-	</li>
-	<li>
-
-	VPN TYPE: L2TP over IPSec 
-	</li>
-	<li>
-
-
-	Click Create
-	</li>
-	<li>
-	Server Address: &quot;<b>83.223.208.50</b>&quot;
-	</li>
-	<li>
-	Account Name: Enter your PAWS username
-	</li>
-	<li>
-
-	Click on Authentication Settings
-	</li>
-	<li>
-	In the pop-up click on Password and put in your password
-	</li>
-	<li>
-	Click on Shared Secret and put in &quot;<b>S3cr3t4PAWSPr0j3ct</b>&quot; as the shared secret
-	</li>
-	<li>
-	Click OK
-	</li>
-	<li>
-	DO NOT CLICK CONNECT YET
-	</li>
-	<li>
-	Click on Advanced
-	</li>
-	<li>
-	Click on the option send all traffic over VPN connection
-	</li>
-	<li>
-	Click Ok
-	</li>
-	<li>
-
-	Click Apply
-	</li>
-	<li>
-
-	Your L2TP connection is setup now. Click on Connect
-	</li>
-
-	<ul>
-
-APPLE_L2TP
-
+sub print_apple {
+intro_text();
+print "<br>\n";
+print "<B>Step 1.</B> Please click <a href=\"https://sourceforge.net/projects/tunnelblick/files/All%20files/Tunnelblick_3.3.2.dmg/download\">here</a> to get the app you will need to connect.";
+print "<br>\n";
+print "<B>Step 2.</B> Click <a href=\"http://vpn.publicaccesswifi.org/opvpn_client_conf/paws.ovpn\">here</a> download a special PAWS setup file to get you connected";
+print "<p>\n";
+print "<B>Step 3.</B>Install the Tunnelblick app downloaded at Step 1. Run Tunnelblick. Click [icon]>VPN details. Click '+' in bottom left corner to add a configuration. Click 'I have configurations'. 
+Click 'openvpn configurations'. Move the paws.ovpn file you downloaded in Step 2 into the 'Empty Tunnelblick VPN Configuration' folder created on your desktop.
+Rename the 'Empty Tunnelblick VPN Configuration' directory to 'PAWS-VPN.tblk'. Double click PAWS-VPN.tblk and follow on screen prompts for tunnelblick to install config. 
+Connect to PAWS-VPN, entering your PAWS username and password, when requested.<br>\n";
 }
 
 #########################
 sub print_unknown {
-
 	print "<br>\n";
 	print "Instructions for this device coming soon...\n";
 	print "<br>\n";
-
 }
+
+
+
+
 
